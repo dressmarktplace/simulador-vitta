@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulação</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #073b63;
+      --blue: #075a99;
+      --orange: #f97316;
+      --paper: #fffdf9;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "DM Sans", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      margin: 0;
+    }
+    .top-rule { height: 6px; background: linear-gradient(90deg, #075a99 0 72%, #f97316 72% 100%); }
+    .brand-mark {
+      width: 46px; height: 46px; border-radius: 14px;
+      display: grid; place-items: center; color: #ffffff; background: #075a99;
+      box-shadow: 0 8px 20px rgba(7, 90, 153, .18);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
+      gap: 3.5rem;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .5rem .8rem; border: 1px solid #bfdbf0; border-radius: 999px;
+      color: #075a99; background: #f0f8ff; font-size: .86rem; font-weight: 700;
+    }
+    .hero-title {
+      font-size: clamp(2.4rem, 5.1vw, 4.2rem);
+      line-height: 1.02;
+      letter-spacing: -.04em;
+    }
+    .visual-frame { position: relative; margin-top: 2rem; max-width: 640px; }
+    .hero-photo {
+      width: 100%; height: 255px; display: block; object-fit: cover;
+      border-radius: 22px; box-shadow: 0 22px 45px rgba(7, 59, 99, .15);
+    }
+    .home-chip {
+      position: absolute; right: 1rem; bottom: -1.15rem;
+      display: flex; align-items: center; gap: .7rem; max-width: 240px;
+      padding: .8rem 1rem; border: 1px solid #d4e7f5; border-radius: 16px;
+      color: #073b63; background: #ffffff; box-shadow: 0 14px 30px rgba(7, 59, 99, .12);
+      font-size: .88rem; font-weight: 700;
+    }
+    .form-card {
+      border: 1px solid #d8e4ed; border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(7, 59, 99, .13); background: #ffffff;
+    }
+    .field-control {
+      width: 100%; min-height: 50px; border: 1px solid #b9cad7;
+      border-radius: 12px; padding: .75rem .9rem; color: #073b63; background: #ffffff;
+      outline: none; transition: border-color .18s ease, box-shadow .18s ease;
+    }
+    .field-control:focus {
+      border-color: #075a99; box-shadow: 0 0 0 4px rgba(7, 90, 153, .13);
+    }
+    .field-error { min-height: 1.1rem; margin-top: .35rem; color: #b42318; font-size: .78rem; }
+    .submit-button {
+      min-height: 56px; border: 0; border-radius: 13px; cursor: pointer;
+      background: #f97316; color: #ffffff; font-weight: 800;
+      box-shadow: 0 10px 18px rgba(249, 115, 22, .24);
+      transition: transform .18s ease, background .18s ease;
+    }
+    .submit-button:hover { transform: translateY(-2px); background: #ea580c; }
+    .success-message {
+      border: 1px solid #98d9b1; border-radius: 12px; padding: 1rem;
+      color: #146c3a; background: #f0fdf4; font-size: 0.95rem; font-weight: 600; text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="min-h-screen flex flex-col justify-between bg-gradient-to-b from-white via-white to-[#f5faff]">
+    <div>
+      <div class="top-rule" aria-hidden="true"></div>
+      <header class="w-full px-5 sm:px-8 lg:px-12 pt-6">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="brand-mark" aria-hidden="true">
+              <i data-lucide="house-heart" style="width:24px;height:24px;"></i>
+            </div>
+            <span class="font-extrabold tracking-tight text-lg text-[#073b63]">Seu primeiro Apê</span>
+          </div>
+          <span class="hidden sm:inline-flex items-center gap-2 rounded-full py-2 px-4 text-sm font-semibold bg-[#eaf5ff] text-[#075a99]">Financiamento imobiliário</span>
+        </div>
+      </header>
+
+      <main class="w-full px-5 sm:px-8 lg:px-12 pt-12 pb-20 lg:pt-16">
+        <div class="max-w-7xl mx-auto hero-grid">
+          <div>
+            <div class="eyebrow">
+              <i data-lucide="car-front" style="width:18px;height:18px;"></i>
+              <span>financiamento imobiliário em Araraquara</span>
+            </div>
+            <h1 class="hero-title mt-5 font-extrabold text-[#073b63]">SUBSÍDIO DE ATÉ 55.000! FAÇA SUA SIMULAÇÃO AGORA</h1>
+            <p class="mt-6 max-w-2xl text-lg leading-relaxed text-[#52697b]">Aproveite as condições exclusivas. Faça uma simulação personalizada e descubra as melhores possibilidades para o seu perfil.</p>
+            
+            <div class="visual-frame">
+              <img src="assets/fachada.jpg" alt="Empreendimento residencial Vitta" class="hero-photo" />
+              <div class="home-chip">
+                <i data-lucide="key-round" style="width:22px;height:22px;color:#f97316;flex:none;"></i>
+                <span>Seu primeiro imóvel pode estar mais perto</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="form-card p-6 sm:p-8">
+            <div class="flex items-start gap-3">
+              <div class="benefit-icon shrink-0" aria-hidden="true">
+                <i data-lucide="clipboard-check" style="width:23px;height:23px;"></i>
+              </div>
+              <div>
+                <h2 class="m-0 font-extrabold text-2xl text-[#073b63]">Faça sua simulação</h2>
+                <p class="mt-1 mb-0 text-sm text-[#52697b]">Preencha seus dados para começar.</p>
+              </div>
+            </div>
+
+            <!-- MENSAGEM DE SUCESSO GERENCIADA PELO FORMSPREE AJAX -->
+            <div data-fs-success class="hidden mt-5 success-message">
+              🎉 <strong>Simulação enviada com sucesso!</strong><br>Em até 2 horas nossa equipe entrará em contato com o resultado.
+            </div>
+
+            <form id="simulation-form" class="mt-6">
+              <div class="space-y-4">
+                <div>
+                  <label class="block mb-2 text-sm font-bold text-[#073b63]" for="nome_completo">Nome Completo</label>
+                  <input id="nome_completo" name="nome_completo" type="text" class="field-control" required data-fs-field />
+                </div>
+                <div>
+                  <label class="block mb-2 text-sm font-bold text-[#073b63]" for="whatsapp">WhatsApp</label>
+                  <input id="whatsapp" name="whatsapp" type="tel" inputmode="numeric" class="field-control" required placeholder="(00) 00000-0000" data-fs-field />
+                </div>
+                <div>
+                  <label class="block mb-2 text-sm font-bold text-[#073b63]" for="renda">Renda</label>
+                  <input id="renda" name="renda" type="text" inputmode="numeric" class="field-control" required placeholder="R$ 0,00" data-fs-field />
+                </div>
+                <div>
+                  <label class="block mb-2 text-sm font-bold text-[#073b63]" for="tempo_fgts">Tempo de FGTS</label>
+                  <input id="tempo_fgts" name="tempo_fgts" type="text" class="field-control" required placeholder="Ex: 3 anos ou mais" data-fs-field />
+                </div>
+                <div>
+                  <label class="block mb-2 text-sm font-bold text-[#073b63]">Você tem dependentes?</label>
+                  <div class="grid grid-cols-2 gap-3">
+                    <label class="flex min-h-[52px] cursor-pointer items-center justify-center rounded-xl border border-slate-300 px-4 py-3 text-center font-bold text-[#073b63] hover:bg-slate-50 transition-colors has-[:checked]:border-[#075a99] has-[:checked]:bg-[#eaf5ff] has-[:checked]:text-[#075a99]">
+                      <input name="tem_dependentes" type="radio" value="Sim" class="sr-only" required data-fs-field /> Sim
+                    </label>
+                    <label class="flex min-h-[52px] cursor-pointer items-center justify-center rounded-xl border border-slate-300 px-4 py-3 text-center font-bold text-[#073b63] hover:bg-slate-50 transition-colors has-[:checked]:border-[#075a99] has-[:checked]:bg-[#eaf5ff] has-[:checked]:text-[#075a99]">
+                      <input name="tem_dependentes" type="radio" value="Não" class="sr-only" data-fs-field /> Não
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" data-fs-submit-btn class="submit-button mt-5 w-full text-base">
+                SIMULAR MEU FINANCIAMENTO GRATUITAMENTE
+              </button>
+
+              <p class="mt-4 mb-0 text-center text-xs text-[#52697b]">Seus dados serão usados apenas para realizar sua simulação.</p>
+            </form>
+          </aside>
+        </div>
+      </main>
+    </div>
+
+    <footer class="w-full px-5 sm:px-8 lg:px-12 py-6 border-t border-slate-200">
+      <p class="m-0 text-center text-xs text-[#52697b]">Simulação de financiamento imobiliário</p>
+    </footer>
+  </div>
+
+  <!-- BIBLIOTECA OFICIAL DO FORMSPREE AJAX -->
+  <script>
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '#simulation-form', formId: 'mvkodawv' });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+
+      // Máscara de WhatsApp
+      document.getElementById('whatsapp').addEventListener('input', (e) => {
+        let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+        if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+        if (v.length > 9) v = `${v.slice(0,9)}-${v.slice(9)}`;
+        e.target.value = v;
+      });
+
+      // Máscara de Renda (Moeda)
+      document.getElementById('renda').addEventListener('input', (e) => {
+        let v = e.target.value.replace(/\D/g, '');
+        if (!v) { e.target.value = ''; return; }
+        v = (Number(v) / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        e.target.value = v;
+      });
+    });
+  </script>
+</body>
+</html>
